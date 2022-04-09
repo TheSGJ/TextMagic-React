@@ -28,3 +28,11 @@ export default function Nav(props) {
   </nav>
   )
 }
+
+Navbar.propTypes = {
+  title: PropTypes.string.isRequired
+};
+
+Navbar.defaultProps = {
+  title: "TextMagic"
+};
