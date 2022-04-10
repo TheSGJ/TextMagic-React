@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       <Navbar title="TextMagic"/>
-      <Textform />
+      <Textform heading="Enter a text, to analyse it."/>
     </>
   );
 }
