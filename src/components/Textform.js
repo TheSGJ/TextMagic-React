@@ -1,5 +1,5 @@
-import React from 'react'
-
+import React, {useState} from 'react'
+const [count, set] = useState("Enter text here!");
 export default function Textform(props) {
   return (
     
