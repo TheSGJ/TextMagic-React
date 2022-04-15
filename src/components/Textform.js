@@ -31,7 +31,7 @@ export default function Textform(props) {
   };
 
   // using the useState!
-  const [text, setText] = useState("Enter text here!");
+  const [text, setText] = useState("Enter some text to see preview here!");
   return (
     <>
       <div className="container my-3">
@@ -40,7 +40,6 @@ export default function Textform(props) {
         <div class="my-3">
           <textarea
             className="form-control"
-            value={text}
             onChange={handleOnChange}
             rows="8"
             id="floatingTextarea2"
