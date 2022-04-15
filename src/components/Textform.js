@@ -4,15 +4,29 @@ export default function Textform(props) {
     let newText = text.toUpperCase();
     setText(newText);
   };
+  
+  const handleLosClick = () => {
+    let newText = text.toLowerCase();
+    setText(newText);
+  };
   const handleOnChange = (event) => {
     setText(event.target.value);
   };
+
+  const minifyCss = () => {
+    let newText = text
+    .replace(/([^0-9a-zA-Z.#])\s+/g, "$1")
+    .replace(/\s([^0-9a-zA-Z.#]+)/g, "$1")
+    .replace(/;}/g, "}")
+    setText(newText)
+  }
+  
   // using the useState!
   const [text, setText] = useState("Enter text here!");
   return (
     <>
     <div className="container my-3">
-      <h1 className="text-center">{props.heading}</h1>
+      <h1 className="my-1">{props.heading}</h1>
       <div class="my-3">
         <textarea
           className="form-control"
@@ -22,8 +36,19 @@ export default function Textform(props) {
           id="floatingTextarea2"
         ></textarea>
       </div>
-      <button className="btn btn-primary" onClick={handleUpsClick}>
+      <h5 className="my-3">Utility Tools</h5>
+      <button className="btn btn-primary mx-1" onClick={handleUpsClick}>
         Set to Uppercase
+      </button>
+      <button className="btn btn-primary mx-1" onClick={handleLosClick}>
+        Set to Lowercase
+      </button>
+      <button className="btn btn-primary mx-1">
+        Clear
+      </button>
+      <h5 className="my-3">Dev Tools</h5>
+      <button className="btn btn-primary mx-1" onClick={minifyCss}>
+        Minify CSS
       </button>
     </div>
     <div className="container my-3">
