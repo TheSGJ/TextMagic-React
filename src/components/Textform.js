@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 
-
 export default function Textform(props) {
   const handleClearClick = () => {
     let newText = "";
@@ -38,18 +37,7 @@ export default function Textform(props) {
     setText(updatedText);
   };
 
-
-
   // Generate a random quote:
-
-  const randomQuote = () => {
-    fetch("http://api.quotable.io/random")
-      .then((res) => res.json())
-      .then((result) => {
-        let newText = result.content
-        setText(newText);
-      });
-  }
 
   //to capitalise first text of the sentence
   const handleCapFirst = () => {
@@ -88,6 +76,11 @@ export default function Textform(props) {
     msg.text = text;
     window.speechSynthesis.speak(msg);
   };
+  // Copy to clipboard:
+  const handleCopy = () => {
+    navigator.clipboard.writeText(text);
+    props.showAlert("Copied to Clipboard!", "success");
+  };
   // using the useState!
   const [text, setText] = useState("");
   return (
@@ -111,10 +104,16 @@ export default function Textform(props) {
           Clear
         </button>
         <button
-          className="btn btn-outline-dark mx-1 text-center"
+          className="btn btn-outline-info mx-1 text-center"
           onClick={handleSpeak}
         >
           🔊
+        </button>
+        <button
+          className="btn btn-outline-primary mx-1 text-center"
+          onClick={handleCopy}
+        >
+          Copy to Clipboard
         </button>
         <h5 className="my-3">Utility Tools</h5>
         <button className="btn btn-primary mx-1" onClick={handleUpsClick}>
@@ -144,9 +143,7 @@ export default function Textform(props) {
         <button className="btn btn-primary mx-1 my-1" onClick={handleCapsWord}>
           Caps first letter of Words
         </button>
-        <button className="btn btn-primary mx-1 my-1" onClick={randomQuote}>
-          Random Quote
-        </button>
+
         <h5 className="my-3">Dev Tools</h5>
         <button className="btn btn-primary mx-1" onClick={minifyCss}>
           Minify CSS
@@ -155,19 +152,14 @@ export default function Textform(props) {
       <div className="container my-3">
         <h3 className="text-center">Text Analysis</h3>
         <p className="text-center">
-          <b>{text.split(" ").length}</b> words & <b>{text.length}</b>{" "}
+          <b>{text.split(/\s+/).filter((element)=>{return element.length!==0}).length}</b> words & <b>{text.length}</b>{" "}
           characters.
         </p>
         <p className="text-center">
-          Sentence count: <b>{text.split(/[.?!]\s/).length}</b>
-          <br />
-          Paragraph count: <b>{text.split(/\r\n|\r|\n/).length}</b>
-        </p>
-        <p className="text-center">
-          Total Time to Read: <b>{0.008 * text.split(" ").length}</b> Minutes.
+          Total Time to Read: <b>{0.008 * text.split(/\s+/).filter((element)=>{return element.length!==0}).length}</b> Minutes.
         </p>
         <h4 className="text-center">Preview Text:</h4>
-        <p className="text-center">{text}</p>
+        <p className="text-center">{text.length>0?text:"Nothing to preview!"}</p>
       </div>
     </>
   );
