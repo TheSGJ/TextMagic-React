@@ -37,6 +37,17 @@ export default function Textform(props) {
     setText(updatedText);
   };
 
+  // Generate a random quote:
+  function randomQuote() {
+    fetch("http://api.quotable.io/random")
+      .then((response) => response.json())
+      .then((result) => {
+        let newText = ` "${result.content}"
+                                                        --  ${result.author} 
+                            `;
+        setText(newText);
+      });
+  }
 
   //to capitalise first text of the sentence
   const handleCapFirst = () => {
@@ -74,7 +85,7 @@ export default function Textform(props) {
     let msg = new SpeechSynthesisUtterance();
     msg.text = text;
     window.speechSynthesis.speak(msg);
-  }
+  };
   // using the useState!
   const [text, setText] = useState("");
   return (
@@ -97,6 +108,12 @@ export default function Textform(props) {
         >
           Clear
         </button>
+        <button
+          className="btn btn-outline-dark mx-1 text-center"
+          onClick={handleSpeak}
+        >
+          🔊
+        </button>
         <h5 className="my-3">Utility Tools</h5>
         <button className="btn btn-primary mx-1" onClick={handleUpsClick}>
           Set to Uppercase
@@ -104,10 +121,16 @@ export default function Textform(props) {
         <button className="btn btn-primary mx-1" onClick={handleLosClick}>
           Set to Lowercase
         </button>
-        <button className="btn btn-primary mx-1 my-1" onClick={handleTxtExtract}>
+        <button
+          className="btn btn-primary mx-1 my-1"
+          onClick={handleTxtExtract}
+        >
           Extract Text
         </button>
-        <button className="btn btn-primary mx-1 my-1" onClick={handleNumExtract}>
+        <button
+          className="btn btn-primary mx-1 my-1"
+          onClick={handleNumExtract}
+        >
           Extract Numbers
         </button>
         <button className="btn btn-primary mx-1 my-1" onClick={handleReverse}>
@@ -119,8 +142,8 @@ export default function Textform(props) {
         <button className="btn btn-primary mx-1 my-1" onClick={handleCapsWord}>
           Caps first letter of Words
         </button>
-        <button className="btn btn-primary mx-1 my-1" onClick={handleSpeak}>
-          🔊
+        <button className="btn btn-primary mx-1 my-1" onClick={randomQuote}>
+          Random Quote
         </button>
         <h5 className="my-3">Dev Tools</h5>
         <button className="btn btn-primary mx-1" onClick={minifyCss}>
@@ -134,8 +157,9 @@ export default function Textform(props) {
           characters.
         </p>
         <p className="text-center">
-        Sentence count: <b>{text.split(/[.?!]\s/).length}</b><br />
-        Paragraph count: <b>{text.split(/\r\n|\r|\n/).length}</b>
+          Sentence count: <b>{text.split(/[.?!]\s/).length}</b>
+          <br />
+          Paragraph count: <b>{text.split(/\r\n|\r|\n/).length}</b>
         </p>
         <p className="text-center">
           Total Time to Read: <b>{0.008 * text.split(" ").length}</b> Minutes.
