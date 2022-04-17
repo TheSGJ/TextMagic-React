@@ -38,7 +38,7 @@ export default function Textform(props) {
   };
 
   // Generate a random quote:
-  function randomQuote() {
+  const randomQuote = () => {
     fetch("http://api.quotable.io/random")
       .then((response) => response.json())
       .then((result) => {
