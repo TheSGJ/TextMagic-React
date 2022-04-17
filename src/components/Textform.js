@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+
 export default function Textform(props) {
   const handleClearClick = () => {
     let newText = "";
@@ -37,14 +38,15 @@ export default function Textform(props) {
     setText(updatedText);
   };
 
+
+
   // Generate a random quote:
+
   const randomQuote = () => {
     fetch("http://api.quotable.io/random")
-      .then((response) => response.json())
+      .then((res) => res.json())
       .then((result) => {
-        let newText = ` "${result.content}"
-                                                        --  ${result.author} 
-                            `;
+        let newText = result.content
         setText(newText);
       });
   }
