@@ -1,42 +1,64 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap");
+
+:root {
+  --dark: #18191c;
+  --white: rgb(236, 236, 236);
+  --textarea: var(--white);
+  --black: black;
+  --clr-navy: #042743;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  font-family: "Ubuntu", sans-serif;
+  background: var(--background-color);
+  color: var(--text-color);
+  font-weight: var(--font-weight);
+  transition: background 0.3s ease-in-out, color 0.6s ease-in-out;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body.light {
+  --background-color: var(--white);
+  --text-color: var(--dark);
+  --font-weight: 500;
+  --textarea: white;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+body.dark {
+  --background-color: var(--dark);
+  --text-color: var(--white);
+  --font-weight: 500;
+  --textarea: black;
+ 
+}
+
+nav {
+  padding: 1rem 25%;
+  margin: 0 auto;
   display: flex;
-  flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background: var(--text-color);
 }
 
-.App-link {
-  color: #61dafb;
+nav a {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: var(--background-color);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+
+nav a:hover {
+  color: rgb(12, 216, 189);
 }
 
-.head {
-  color: darkblue;
+h1 {
+  text-align: center;
+  margin: 3rem 0 2rem 0;
+}
+
+p {
+  width: 40%;
+  margin: 1rem auto;
+  line-height: 1.6;
 }

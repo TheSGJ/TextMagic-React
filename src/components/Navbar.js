@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ThemeToggle from "./ThemeToggle";
 
 
 export default function Navbar(props) {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-dark" style={{backgroundColor: '#36393f'}}>
     <div className="container-fluid">
       <a className="navbar-brand" href="/">{props.title}</a>
-
+      
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
           <li className="nav-item">
@@ -19,6 +20,7 @@ export default function Navbar(props) {
         </ul>
        
       </div>
+      <div className="pull-left"><ThemeToggle /></div>
     </div>
   </nav>
   )

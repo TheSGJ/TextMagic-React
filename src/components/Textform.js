@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import "../App.css";
 export default function Textform(props) {
   const handleClearClick = () => {
     let newText = "";
@@ -94,11 +94,11 @@ export default function Textform(props) {
             value={text}
             onChange={handleOnChange}
             rows="6"
-            id="floatingTextarea2"
+            id="TextformInput"
           ></textarea>
         </div>
         <button
-          className="btn btn-outline-dark mx-1 text-center"
+          className="btn btn-outline-danger mx-1 text-center"
           onClick={handleClearClick}
         >
           Clear
