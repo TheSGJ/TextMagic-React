@@ -7,9 +7,7 @@ function App() {
   return (
     <>
       <Navbar title="TextMagic"/>
-      <div className="pull-left">
-        <ThemeToggle />
-      </div>
+      <ThemeToggle />
       <Textform heading="Enter a text, to analyse it."/>
     </>
   );
