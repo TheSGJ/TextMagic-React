@@ -1,7 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ThemeToggle from "./ThemeToggle";
-
 
 export default function Navbar(props) {
   return (
@@ -20,7 +18,7 @@ export default function Navbar(props) {
         </ul>
        
       </div>
-      <div className="pull-left"><ThemeToggle /></div>
+      
     </div>
   </nav>
   )
