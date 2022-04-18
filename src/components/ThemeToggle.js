@@ -6,7 +6,7 @@ const ThemeToggle = () => {
   const lightTheme = "light";
   const darkTheme = "dark";
   let theme;
-  const [themeBtn, setThemeBtn] = useState("🔆");
+  const [themeBtn, setThemeBtn] = useState("Enable DarkMode");
   
   if (localStorage) {
     theme = localStorage.getItem("theme");
@@ -16,7 +16,7 @@ const ThemeToggle = () => {
     body.classList.add(theme);
   } else {
     body.classList.add(lightTheme);
-    setThemeBtn("🔆")
+    setThemeBtn("Enable DarkMode")
   }
 
   const switchTheme = (e) => {
@@ -25,13 +25,13 @@ const ThemeToggle = () => {
       e.target.classList.remove(clickedClass);
       localStorage.setItem("theme", "light");
       theme = lightTheme;
-      setThemeBtn("🔆")
+      setThemeBtn("Enable DarkMode")
     } else {
       body.classList.replace(lightTheme, darkTheme);
       e.target.classList.add(clickedClass);
       localStorage.setItem("theme", "dark");
       theme = darkTheme;
-      setThemeBtn("🌙")
+      setThemeBtn("Enable LightMode")
     }
   };
 
