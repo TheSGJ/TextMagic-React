@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export default function Navbar(props) {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark" style={{backgroundColor: '#36393f'}}>
+    <nav className="navbar navbar-expand-lg navbar-dark" style={{backgroundColor: '#171c24'}}>
     <div className="container-fluid">
       <a className="navbar-brand" href="/">{props.title}</a>
       
