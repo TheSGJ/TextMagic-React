@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from "react-router-dom";
 import "../styles/Navbar.css"
+
 export default function Navbar(props) {
   const showMenu = () => {
     const hamburger = document.querySelector(".hamburger");
@@ -23,13 +25,13 @@ export default function Navbar(props) {
  
   return (
     <nav className="navbar nav navbar-dark" style={{backgroundColor: '#171c24'}}>
-    <a href="/" className="nav-branding">{props.title}</a>
+    <Link to="/" className="nav-branding">{props.title}</Link>
     <ul className="nav-menu">
         <li className="nav-item">
-            <a className="nav-link" onClick={handleLinkClose}>Home</a>
+            <Link className="nav-link" to="/" onClick={handleLinkClose}>Home</Link>
         </li>
         <li className="nav-item">
-            <a className="nav-link" onClick={handleLinkClose}>About</a>
+            <Link className="nav-link" to="/about" onClick={handleLinkClose}>About</Link>
         </li>
     </ul>
     <div className="hamburger" onClick={showMenu}>
