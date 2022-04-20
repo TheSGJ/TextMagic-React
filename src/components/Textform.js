@@ -3,16 +3,19 @@ export default function Textform(props) {
   const handleClearClick = () => {
     let newText = "";
     setText(newText);
+    props.showAlert("Cleared all Texts!", "success");
   };
 
   const handleUpsClick = () => {
     let newText = text.toUpperCase();
     setText(newText);
+    props.showAlert("Converted to uppercase!", "success");
   };
 
   const handleLosClick = () => {
     let newText = text.toLowerCase();
     setText(newText);
+    props.showAlert("Converted to lowercase!", "success");
   };
   const handleOnChange = (event) => {
     setText(event.target.value);
@@ -24,6 +27,7 @@ export default function Textform(props) {
       .replace(/\s([^0-9a-zA-Z.#]+)/g, "$1")
       .replace(/;}/g, "}");
     setText(newText);
+    props.showAlert("Minified the CSS!", "success");
   };
 
   // Caps first letter of Word:
@@ -34,6 +38,7 @@ export default function Textform(props) {
     }
     const updatedText = arr.join(" ");
     setText(updatedText);
+    props.showAlert("Capitalized Each Word!", "success");
   };
 
   // Generate a random quote:
@@ -42,6 +47,7 @@ export default function Textform(props) {
   const handleCapFirst = () => {
     let newText = text.charAt(0).toUpperCase() + text.slice(1);
     setText(newText);
+    props.showAlert("Capitalized the first word of the first sentence!", "success");
   };
   //remove all the symbols
   const handleTxtExtract = () => {
@@ -50,6 +56,7 @@ export default function Textform(props) {
     const letters = text.match(regex);
     const res1 = letters.join("");
     setText(res1);
+    props.showAlert("Extracted the text!", "success");
   };
 
   //to extract only the numbers in the text:
@@ -58,9 +65,10 @@ export default function Textform(props) {
     const digits = text.match(regex);
     const res = digits.join("");
     setText(res);
+    props.showAlert("Extracted the Numbers!", "success");
   };
 
-  const handleReverse = (event) => {
+  const handleReverse = () => {
     /* Convert string to array*/
     let strArr = text.split("");
     /* Reverse array*/
@@ -68,17 +76,20 @@ export default function Textform(props) {
     /* Convert array to string*/
     let newText = strArr.join("");
     setText(newText);
+    props.showAlert("Reversed the Text!", "success");
   };
   // function to use Text to speech:
   const handleSpeak = () => {
     let msg = new SpeechSynthesisUtterance();
     msg.text = text;
     window.speechSynthesis.speak(msg);
+    props.showAlert("Text to Speech Enabled!", "success");
   };
   // Copy to clipboard:
   const handleCopy = () => {
     navigator.clipboard.writeText(text);
     props.showAlert("Copied to Clipboard!", "success");
+
   };
   // using the useState!
   const [text, setText] = useState("");
@@ -111,6 +122,7 @@ export default function Textform(props) {
         <button
           className="btn btn-outline-primary mx-1 text-center"
           onClick={handleCopy}
+          disabled={text.length===0}
         >
           Copy to Clipboard
         </button>
