@@ -4,9 +4,9 @@ import Navbar from "./components/Navbar";
 import Textform from "./components/Textform";
 import About from "./components/About";
 import Alert from './components/Alert';
-import { Toggle } from './Toggle';
-import { useDarkMode } from '../styles/useDarkMode';
-import { GlobalStyles, lightTheme, darkTheme } from '../styles/globalStyles';
+import { Toggle } from './components/Toggle';
+import { useDarkMode } from './styles/useDarkMode';
+import { GlobalStyles, lightTheme, darkTheme } from './styles/globalStyles';
 import { ThemeProvider } from 'styled-components';
 import {
   BrowserRouter as Router,
