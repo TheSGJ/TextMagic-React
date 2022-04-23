@@ -45,7 +45,7 @@ export default function Navbar(props) {
     </div>
 <div className="pull-right">
 <Toggle theme={theme} toggleTheme={toggleTheme} />
-/div>
+</div>
 </nav>
 <GlobalStyles />
   )
