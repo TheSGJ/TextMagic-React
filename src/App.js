@@ -4,9 +4,6 @@ import Navbar from "./components/Navbar";
 import Textform from "./components/Textform";
 import About from "./components/About";
 import Alert from './components/Alert';
-import { Toggle } from './components/Toggle';
-import { useDarkMode } from './styles/useDarkMode';
-import { GlobalStyles, lightTheme, darkTheme } from './styles/globalStyles';
 import { ThemeProvider } from 'styled-components';
 import {
   BrowserRouter as Router,
@@ -16,8 +13,6 @@ import {
 
 
 function App() {
-  const [ theme, toggleTheme ] = useDarkMode();
-  const themeMode = theme === 'light' ? lightTheme : darkTheme;
   const [alert, setAlert] = useState(null);
 
   const showAlert = (message, type)=>{
@@ -34,10 +29,7 @@ function App() {
     <ThemeProvider theme={themeMode}>
       <Navbar title="TextMagic"/>
       <Alert alert={alert}/>
-        <GlobalStyles />
-        <div className="container my-1">
-        <Toggle theme={theme} toggleTheme={toggleTheme} />
-        </div>
+        
     </ThemeProvider>
     <Routes>
       <Route path="/" element={<Textform showAlert={showAlert} heading="Enter a text, to analyse it."/>} />
