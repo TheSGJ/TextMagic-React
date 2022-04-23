@@ -2,12 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
 import "../styles/Navbar.css"
-import { Toggle } from './Toggle';
-import { useDarkMode } from '../styles/useDarkMode';
-import { GlobalStyles, lightTheme, darkTheme } from '../styles/globalStyles';
+
 export default function Navbar(props) {
-  const [ theme, toggleTheme ] = useDarkMode();
-  const themeMode = theme === 'light' ? lightTheme : darkTheme;
+
   const showMenu = () => {
     const hamburger = document.querySelector(".hamburger");
     const navMenu = document.querySelector(".nav-menu");
@@ -28,7 +25,6 @@ export default function Navbar(props) {
   }
  
   return (
-<>
     <nav className="navbar nav navbar-dark" style={{backgroundColor: '#171c24'}}>
     <Link to="/" className="nav-branding">{props.title}</Link>
     <ul className="nav-menu">
@@ -44,12 +40,8 @@ export default function Navbar(props) {
         <span className="bar"></span>
         <span className="bar"></span>
     </div>
-<div className="pull-right">
-<Toggle theme={theme} toggleTheme={toggleTheme} />
-</div>
+
 </nav>
-<GlobalStyles />
-</>
   )
 }
 
