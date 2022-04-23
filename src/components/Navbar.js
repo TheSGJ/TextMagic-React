@@ -28,6 +28,7 @@ export default function Navbar(props) {
   }
  
   return (
+<>
     <nav className="navbar nav navbar-dark" style={{backgroundColor: '#171c24'}}>
     <Link to="/" className="nav-branding">{props.title}</Link>
     <ul className="nav-menu">
@@ -48,6 +49,7 @@ export default function Navbar(props) {
 </div>
 </nav>
 <GlobalStyles />
+</>
   )
 }
 
