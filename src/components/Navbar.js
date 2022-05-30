@@ -1,47 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
-import "../styles/Navbar.css"
+import { Toggle } from './Toggle';
+import { useDarkMode } from '../styles/useDarkMode';
+import { GlobalStyles, lightTheme, darkTheme } from '../styles/globalStyles';
+import { ThemeProvider } from "styled-components";
 
 export default function Navbar(props) {
-
-  const showMenu = () => {
-    const hamburger = document.querySelector(".hamburger");
-    const navMenu = document.querySelector(".nav-menu");
-    
-    hamburger.classList.toggle("active");
-    navMenu.classList.toggle("active");
-    window.addEventListener('scroll', () => {
-      hamburger.classList.remove("active");
-      navMenu.classList.remove("active");
-    
-    })
-  }
-  const handleLinkClose = () => {
-    const hamburger = document.querySelector(".hamburger");
-    const navMenu = document.querySelector(".nav-menu");
-    hamburger.classList.remove("active");
-    navMenu.classList.remove("active");
-  }
- 
+  const [ theme, toggleTheme ] = useDarkMode();
+  const themeMode = theme === 'light' ? lightTheme : darkTheme;
   return (
-    <nav className="navbar nav navbar-dark" style={{backgroundColor: '#171c24'}}>
-    <Link to="/" className="nav-branding">{props.title}</Link>
-    <ul className="nav-menu">
-        <li className="nav-item">
-            <Link className="nav-link" to="/" onClick={handleLinkClose}>Home</Link>
-        </li>
-        <li className="nav-item">
-            <Link className="nav-link" to="/about" onClick={handleLinkClose}>About</Link>
-        </li>
-    </ul>
-    <div className="hamburger" onClick={showMenu}>
-        <span className="bar"></span>
-        <span className="bar"></span>
-        <span className="bar"></span>
-    </div>
+<header className="body-font">
+  <div className="container mx-auto flex flex-wrap p-1 flex-col md:flex-row items-center">
+    <Link to="/" className="flex title-font font-medium items-center mx-3 md:mb-0">
+      <span className="ml-3 text-xl text-underline">{props.title}</span>
+    </Link>
+    <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
+      <Link to="/" className="mr-2 hover:text-blue-900">Home</Link>
+      <Link to="/about" className="mx-2 hover:text-blue-900">About</Link>
+      <ThemeProvider theme={themeMode}>
+      <GlobalStyles />
+      <span className='text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full py-1 mx-1 px-1 text-sm text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'><Toggle className="mx-2  hover:text-blue-900" toggleTheme={toggleTheme} /></span>
+      </ThemeProvider>
+    </nav>
+  </div>
+  <hr className="my-1" />
+</header>
 
-</nav>
+
   )
 }
 
