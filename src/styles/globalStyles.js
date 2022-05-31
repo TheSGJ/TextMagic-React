@@ -24,16 +24,24 @@ export const GlobalStyles = createGlobalStyle`
     transition: all .5s linear;
 
   }
+  .form-control {
+    background: ${({ theme }) => theme.txtare};
+    color: ${({ theme }) => theme.txtarclr};
+  }
 `;
 
 export const lightTheme = {
   body: '#fff',
   text: '#121212',
   primary: '#6200ee',
+  txtare: '#fff',
+  txtarclr: '#fff',
 };
 
 export const darkTheme = {
   body: '#121212',
   text: '#fff',
   primary: '#bb86fc',
+  txtare: '#474747',
+  txtarclr: '#474747',
 };

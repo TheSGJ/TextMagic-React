@@ -37,13 +37,13 @@ function App() {
       </Routes>
       <CookieConsent
         location="bottom"
-        buttonText="Agree"
+        buttonText="Got it"
         cookieName="txtmc"
         style={{ background: "#2B373B" }}
         buttonStyle={{ color: "#4e503b", fontSize: "13px" }}
         expires={150}
       >
-       We use cookies to enhance the user experience.{" "}
+       We use cookies to enhance the user experience.
       </CookieConsent>
     </Router>
   );
