@@ -152,39 +152,39 @@ export default function Textform(props) {
           Copy to Clipboard
         </button>
         <h5 className="my-3">Utility Tools</h5>
-        <button className="btn btn-primary mx-1" onClick={handleUpsClick}>
+        <button className="btn btn-primary mx-1" onClick={handleUpsClick} disabled={text.length === 0}>
           Set to Uppercase
         </button>
-        <button className="btn btn-primary mx-1" onClick={handleLosClick}>
+        <button className="btn btn-primary mx-1" onClick={handleLosClick} disabled={text.length === 0}>
           Set to Lowercase
         </button>
         <button
           className="btn btn-primary mx-1 my-1"
-          onClick={handleTxtExtract}
+          onClick={handleTxtExtract} disabled={text.length === 0}
         >
           Extract Text
         </button>
         <button
           className="btn btn-primary mx-1 my-1"
-          onClick={handleNumExtract}
+          onClick={handleNumExtract} disabled={text.length === 0}
         >
           Extract Numbers
         </button>
-        <button className="btn btn-primary mx-1 my-1" onClick={handleReverse}>
+        <button className="btn btn-primary mx-1 my-1" onClick={handleReverse} disabled={text.length === 0}>
           Reverse Text
         </button>
-        <button className="btn btn-primary mx-1 my-1" onClick={handleCapFirst}>
+        <button className="btn btn-primary mx-1 my-1" onClick={handleCapFirst} disabled={text.length === 0}>
           Capital first Letter
         </button>
-        <button className="btn btn-primary mx-1 my-1" onClick={handleCapsWord}>
+        <button className="btn btn-primary mx-1 my-1" onClick={handleCapsWord} disabled={text.length === 0}>
           Caps first letter of Words
         </button>
 
         <h5 className="my-3">Dev Tools</h5>
-        <button className="btn btn-primary mx-1" onClick={minifyCss}>
+        <button className="btn btn-primary mx-1" onClick={minifyCss} disabled={text.length === 0}>
           Minify CSS
         </button>
-        <button className="btn btn-primary mx-1" onClick={minifyHtml}>
+        <button className="btn btn-primary mx-1" onClick={minifyHtml} disabled={text.length === 0}>
           Minify HTML
         </button>
       </div>
