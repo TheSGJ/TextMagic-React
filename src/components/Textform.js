@@ -4,18 +4,21 @@ export default function Textform(props) {
     let newText = "";
     setText(newText);
     props.showAlert("Cleared all Texts!", "success");
+    handleUpScroll();
   };
 
   const handleUpsClick = () => {
     let newText = text.toUpperCase();
     setText(newText);
     props.showAlert("Converted to uppercase!", "success");
+    handleUpScroll();
   };
 
   const handleLosClick = () => {
     let newText = text.toLowerCase();
     setText(newText);
     props.showAlert("Converted to lowercase!", "success");
+    handleUpScroll();
   };
   const handleOnChange = (event) => {
     setText(event.target.value);
@@ -28,6 +31,7 @@ export default function Textform(props) {
       .replace(/;}/g, "}");
     setText(newText);
     props.showAlert("Minified the CSS!", "success");
+    handleUpScroll();
   };
 
   // Caps first letter of Word:
@@ -39,6 +43,7 @@ export default function Textform(props) {
     const updatedText = arr.join(" ");
     setText(updatedText);
     props.showAlert("Capitalized Each Word!", "success");
+    handleUpScroll();
   };
 
   // Generate a random quote:
@@ -47,7 +52,11 @@ export default function Textform(props) {
   const handleCapFirst = () => {
     let newText = text.charAt(0).toUpperCase() + text.slice(1);
     setText(newText);
-    props.showAlert("Capitalized the first word of the first sentence!", "success");
+    props.showAlert(
+      "Capitalized the first word of the first sentence!",
+      "success"
+    );
+    handleUpScroll();
   };
   //remove all the symbols
   const handleTxtExtract = () => {
@@ -57,6 +66,7 @@ export default function Textform(props) {
     const res1 = letters.join("");
     setText(res1);
     props.showAlert("Extracted the text!", "success");
+    handleUpScroll();
   };
 
   //to extract only the numbers in the text:
@@ -66,6 +76,7 @@ export default function Textform(props) {
     const res = digits.join("");
     setText(res);
     props.showAlert("Extracted the Numbers!", "success");
+    handleUpScroll();
   };
 
   const handleReverse = () => {
@@ -77,6 +88,7 @@ export default function Textform(props) {
     let newText = strArr.join("");
     setText(newText);
     props.showAlert("Reversed the Text!", "success");
+    handleUpScroll();
   };
   // function to use Text to speech:
   const handleSpeak = () => {
@@ -84,12 +96,25 @@ export default function Textform(props) {
     msg.text = text;
     window.speechSynthesis.speak(msg);
     props.showAlert("Text to Speech Enabled!", "success");
+    handleUpScroll();
   };
   // Copy to clipboard:
   const handleCopy = () => {
     navigator.clipboard.writeText(text);
     props.showAlert("Copied to Clipboard!", "success");
-
+    handleUpScroll();
+  };
+  const handleUpScroll = () => {
+    window.scrollTo(0, 0);
+  };
+  const minifyHtml = () => {
+    let html = text
+      .replace(/([^0-9a-zA-Z.#])\s+/g, "$1")
+      .replace(/\s([^0-9a-zA-Z.#]+)/g, "$1")
+      .replace(/;}/g, "}");
+    setText(html);
+    props.showAlert("Minified the HTML!", "success");
+    handleUpScroll();
   };
   // using the useState!
   const [text, setText] = useState("");
@@ -122,7 +147,7 @@ export default function Textform(props) {
         <button
           className="btn btn-outline-primary mx-1 text-center"
           onClick={handleCopy}
-          disabled={text.length===0}
+          disabled={text.length === 0}
         >
           Copy to Clipboard
         </button>
@@ -159,18 +184,36 @@ export default function Textform(props) {
         <button className="btn btn-primary mx-1" onClick={minifyCss}>
           Minify CSS
         </button>
+        <button className="btn btn-primary mx-1" onClick={minifyHtml}>
+          Minify HTML
+        </button>
       </div>
       <div className="container my-3">
         <h3 className="text-center">Text Analysis</h3>
         <p className="text-center">
-          <b>{text.split(/\s+/).filter((element)=>{return element.length!==0}).length}</b> words & <b>{text.length}</b>{" "}
-          characters.
+          <b>
+            {
+              text.split(/\s+/).filter((element) => {
+                return element.length !== 0;
+              }).length
+            }
+          </b>{" "}
+          words & <b>{text.length}</b> characters.
         </p>
         <p className="text-center">
-          Total Time to Read: <b>{0.008 * text.split(/\s+/).filter((element)=>{return element.length!==0}).length}</b> Minutes.
+          Total Time to Read:{" "}
+          <b>
+            {0.008 *
+              text.split(/\s+/).filter((element) => {
+                return element.length !== 0;
+              }).length}
+          </b>{" "}
+          Minutes.
         </p>
         <h4 className="text-center">Preview Text:</h4>
-        <p className="text-center">{text.length>0?text:"Nothing to preview!"}</p>
+        <p className="text-center">
+          {text.length > 0 ? text : "Nothing to preview!"}
+        </p>
       </div>
     </>
   );

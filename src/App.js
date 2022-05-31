@@ -6,6 +6,7 @@ import About from "./components/About";
 import Alert from "./components/Alert";
 import CookieConsent from "react-cookie-consent";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Footer from "./components/Footer";
 
 function App() {
   const [alert, setAlert] = useState(null);
@@ -45,6 +46,7 @@ function App() {
       >
        We use cookies to enhance the user experience.
       </CookieConsent>
+      <Footer />
     </Router>
   );
 }
