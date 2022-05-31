@@ -134,13 +134,13 @@ export default function Textform(props) {
         </div>
         <button
           className="btn btn-outline-danger mx-1 text-center"
-          onClick={handleClearClick}
+          onClick={handleClearClick} disabled={text.length === 0}
         >
           Clear
         </button>
         <button
           className="btn btn-outline-info mx-1 text-center"
-          onClick={handleSpeak}
+          onClick={handleSpeak} disabled={text.length === 0}
         >
           🔊
         </button>
