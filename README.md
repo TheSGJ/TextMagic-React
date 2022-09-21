@@ -1,3 +1,6 @@
+# TextMagic React
+- TextMagic is React app which is used to analyse and manipulate your text.
+- Made using the React js functional components.
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
